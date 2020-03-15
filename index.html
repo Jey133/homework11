@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>homework11</title>
+
+	<style>
+	.container{
+		display: flex;
+		flex-wrap: wrap;
+		}
+
+	.action{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 200px;
+		height: 200px;
+		margin-right: 20px;
+		background-color: yellow;
+	}	
+
+	.square{
+		width: 50px;
+		height: 50px;
+		font-size: 40px;
+		background-color: orange;
+	}
+
+	.counter{
+		font-size: 40px;
+		text-align: center;
+		width: 50px;
+		height: 50px;
+		background-color: red;
+	}
+
+	.box{
+		display: flex;
+		margin-right: 20px;
+		height: 200px;
+		width: 200px;
+		background: red;
+		margin-bottom: 20px;
+	}
+	</style>
+</head>
+
+<body>
+<div class="container">
+	<div class="action">
+		<button type="button" class="square plus">+</button>
+		<button type="button" class="square minus">-</button>
+		<div class="counter">0</div>
+	</div>
+	<div class="action">
+		<button type="button" class="square plus">+</button>
+		<button type="button" class="square minus">-</button>
+		<div class="counter">0</div>
+	</div>
+	<div class="action">
+		<button type="button" class="square plus">+</button>
+		<button type="button" class="square minus">-</button>
+		<div class="counter">0</div>
+	</div>
+	<div class="action">
+		<button type="button" class="square plus">+</button>
+		<button type="button" class="square minus">-</button>
+		<div class="counter">0</div>
+	</div>
+	<div class="action">
+		<button type="button" class="square plus">+</button>
+		<button type="button" class="square minus">-</button>
+		<div class="counter">0</div>
+	</div>
+
+	<div class="box">1</div>
+	<div class="box">2</div>
+	<div class="box">3</div>
+	<div class="box">4</div>
+	<div class="box">5</div>
+</div>	
+
+<script>
+	
+const $calc = document.querySelectorAll(".action");
+$calc.forEach(calc => {
+	calc.querySelector(".minus")
+	.addEventListener("click", (e) => {
+		e.target
+		.closest(".action")
+		.querySelector(".counter")
+		.textContent--;
+	});
+	calc.querySelector(".plus")
+	.addEventListener("click", (e) => {
+		e.target
+		.closest(".action")
+		.querySelector(".counter")
+		.textContent++;
+	});
+});
+
+let $box = document.querySelectorAll(".box");
+let $container = document.querySelector(".container");
+$box.forEach(box => {
+	let colors = ["green", "yellow", "blue"];
+	box.addEventListener("click", function(event){
+		let $chekedBox = event.target.closest(".box");
+		const $color = colors.shift();
+		colors.push($color);
+		$chekedBox.style.background = $color;			
+		$container.appendChild($chekedBox);
+	});
+});
+
+</script>
+
+</body>
+</html>
